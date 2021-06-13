@@ -1,0 +1,164 @@
+<div class="employeeList">
+<div class="header">
+  <h3 class="heading">Customer Table</h3>
+<div class="buttons">
+  <button type="button" class="btn enterEmp" data-toggle="modal" data-target="#addEmployee">
+    Add new Employee
+  </button>
+
+  <div class="modal fade" id="addEmployee" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">
+            Add employee Details
+          </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="employeeForm">
+            <div class="form-group">
+              <label for="inputNumber">Name</label>
+              <input type="text" class="form-control" formControlName="name" />
+            </div>
+            <div class="form-group">
+              <label for="inputNumber">Phone Number</label>
+              <input type="text" class="form-control" formControlName="number" />
+            </div>
+            <div class="form-group">
+              <label for="inputNumber">Address</label>
+              <input type="text" class="form-control" formControlName="address" />
+            </div>
+            <div class="form-group">
+              <label for="inputEmail">Temperature</label>
+              <input type="text" class="form-control" formControlName="temperature" />
+            </div>
+            <!-- <div class="form-group photo">
+              <label for="inputCovid">Add Photo</label>
+              <input id="image" type="file" placeholder="Photo"  formControlName="image" capture>
+            </div> -->
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+          <button type="button" class="btn save" (click)="onSubmit()" data-dismiss="modal">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Employee Temperature -->
+  <button type="button" class="btn enterTemp" data-toggle="modal" data-target="#addTemperature">
+    Enter Temperature
+  </button>
+
+  <div class="modal fade" id="addTemperature" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Add Temperature</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="temperatureForm">
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="inputNumber">Phone Number</label>
+                <input type="text" formControlName="number" class="form-control" id="inputNumber" />
+              </div>
+              <div class="form-group col-md-6">
+                <label for="inputTemperature">Temperature</label>
+                <input type="text" formControlName="temperature" class="form-control" id="inputTemperature" />
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+          <button type="button" class="btn save" (click)="updateTemperature()" data-dismiss="modal">Save
+            changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+</div>
+<!-- <mat-form-field>
+  <mat-label>Search</mat-label>
+  <input class="filter" matInput (keyup)="applyFilter($event)" placeholder="Name" #input>
+</mat-form-field> -->
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Mobile</th>
+      <th>Temperature</th>
+      <th>Address</th>
+      <th>Options</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let user of employee;let i =index" [ngClass]="{'odd': i%2==0,'even': i%2!=0}">
+      <td>{{user.name}}</td>
+      <td>{{user.phoneNumber}}</td>
+      <td>{{user.temperature}}</td>
+      <td>{{user.address}}</td>
+
+      <td class="options">
+        <button class="btn edit" (click)="editEmployee(user._id)"  [id]="user._id" data-toggle="modal" data-target="#updateEmployee"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+        <button class="btn delete" (click)="deleteEmployee(user._id)"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+      </td>
+    </tr>
+
+</table>
+<div class="modal fade" id="updateEmployee" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">
+          Update employee Details
+        </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="updateEmployee">
+          <div class="form-group">
+            <label for="inputNumber">Name</label>
+            <input type="text" class="form-control" formControlName="name" ngValue="Pallavi" />
+          </div>
+          <div class="form-group">
+            <label for="inputNumber">Phone Number</label>
+            <input type="text" class="form-control" formControlName="number" />
+          </div>
+          <div class="form-group">
+            <label for="inputNumber">Address</label>
+            <input type="text" class="form-control" formControlName="address" />
+          </div>
+          <div class="form-group">
+            <label for="inputEmail">Temperature</label>
+            <input type="text" class="form-control" formControlName="temperature" />
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn save" (click)="onUpdateEmployee(updatedEmployeeDetails[0]._id)"
+          data-dismiss="modal">Update changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="loading==1" class="backdrop">
+  <mat-spinner class="spinner"></mat-spinner>
+</div>

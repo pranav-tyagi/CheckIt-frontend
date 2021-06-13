@@ -1,0 +1,32 @@
+<div class="search">
+  <div class="overlay"></div>
+  <h2 class="heading"><span class="typewrite"><i class="fa fa-check-square-o" aria-hidden="true"></i>Checkit</span>,
+    before you visit</h2>
+  <h2 class="sub-heading two">
+    What are you looking for <span class="typewrite" data-period="2000"
+      data-type='[ "Malls?", "Restaurants?", "Offices?", "Shops?","Clinics?" ]'></span>
+  </h2>
+  <div class="container searchBar">
+    <div class="searchLocation">
+      <i class="fa fa-map-marker" aria-hidden="true"></i>
+      <input type="text" placeholder="Location" [formControl]="control" [matAutocomplete]="auto"
+        (keydown.enter)="searchEvent($event)">
+      <mat-autocomplete  #auto="matAutocomplete">
+        <mat-option  style="height:3em;" *ngFor="let street of filteredStreets | async" (click)="clickEvent(street)" [value]="street">
+          {{street}}
+        </mat-option>
+      </mat-autocomplete>
+    </div>
+    <div class="searchName">
+      <input type="text" class="cards " placeholder="Search for Shops,Restaurants..." [formControl]="myControl" matInput
+        [matAutocomplete]="auto2">
+      <mat-autocomplete autoActiveFirstOption #auto2="matAutocomplete">
+        <mat-option style="height:10em;"  *ngFor="let option of filteredOptions | async" (click)="onClick(option._id)"
+          [value]="option.organizationName">
+          <app-card [item]="option" class="search"></app-card>
+        </mat-option>
+      </mat-autocomplete>
+      <button type=submit (click)="setName()">Search</button>
+    </div>
+  </div>
+</div>

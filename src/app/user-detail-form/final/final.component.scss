@@ -1,0 +1,38 @@
+
+  table {
+    width: 100%;
+    thead {
+      th {
+        width: 50%;
+      }
+    }
+    tbody {
+      tr {
+        line-height: 2.5em;
+        font-size: 14px;
+        .keys{
+          text-transform: capitalize;
+        }
+      }
+      .odd {
+        background: #fff5ee;
+      }
+    }
+  }
+  .btns{
+    padding: 0;
+    display: flex;
+    .btn{
+      border-radius: 0;
+      width: 100%;
+      box-sizing: border-box;
+      text-transform: uppercase;
+      background: rgb(237, 90, 107);;
+      border: 0;
+      padding: 10px;
+      margin: 1em 0;
+      color: #FFFFFF;
+      font-size: 14px;
+      cursor: pointer;
+    }
+    }

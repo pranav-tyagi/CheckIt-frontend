@@ -1,0 +1,9 @@
+<app-navbar class="stick"></app-navbar>
+<div class="user-detail-form">
+  <img src="../../assets/images/58137-removebg.png">
+  <h2 class="heading">Sign Up Your User Account</h2>
+  <app-progress-bar ></app-progress-bar>
+  <app-user-detail *ngIf="stage==0"></app-user-detail>
+  <app-covid-detail *ngIf="stage==1"></app-covid-detail>
+  <app-final *ngIf="stage==2"></app-final>
+</div>

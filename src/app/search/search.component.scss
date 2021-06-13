@@ -1,0 +1,124 @@
+input {
+  outline: none;
+  border: none;
+}
+.search {
+  position: relative;
+  background-image: url("../../assets/images/city.jpg");
+  background-blend-mode: darken;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  height: 400px;
+  .overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    background-color: #f0e6ff;
+    // background: linear-gradient(90deg, rgba(64,64,161,1) 0%, rgba(255,255,255,1) 92%);
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.75);
+  }
+  .heading,
+  .sub-heading {
+    text-align: center;
+    width: 100%;
+    z-index: 2;
+    position: absolute;
+    top: 20%;
+    color: #fff;
+    font-size: 2em;
+    .typewrite {
+      color: rgb(237, 90, 107);
+    }
+  }
+  .sub-heading {
+    top: 30%;
+    font-size: 1.4em;
+  }
+  .searchName {
+    .mat-option {
+      height: 10rem;
+    }
+    box-sizing: border-box;
+    background-color: #fff;
+    padding: 0.5em;
+    border-radius: 5px;
+    display: grid;
+    grid-template-columns: 1fr 10em;
+    button {
+      // display: none;
+      width: 100%;
+      padding: 0.6rem 1rem;
+      text-align: center;
+      font-size: 1rem;
+      font-weight: 700;
+      box-shadow: 0 2px 5px 0 rgb(255 88 84 / 30%);
+      border-radius: 5px;
+      background-color: rgb(237, 90, 107);
+      color: #fff;
+      border: none;
+    }
+    button:hover {
+      background-color: rgb(255, 32, 58);
+    }
+  }
+}
+.searchLocation {
+  box-sizing: border-box;
+  background-color: #fff;
+  padding: 0.5em;
+  border-radius: 5px;
+  display: flex;
+  .mat-option {
+    height: 2rem;
+  }
+  input {
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+  i {
+    padding: 0 0.3em;
+    font-size: 1.5em;
+    transform: translateY(25%);
+    color: rgb(237, 90, 107);
+  }
+  input:focus {
+    outline: none;
+  }
+}
+
+.searchBar {
+  position: absolute;
+  top: 50%;
+  transform: translateX(10%);
+  width: 80%;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  column-gap: 1em;
+  box-sizing: border-box;
+}
+@media screen and (max-width: 600px) {
+  .search{
+    .searchBar{
+      display: block;
+      width: 100%;
+      left: 0;
+      transform: translateX(0%);
+    }
+  .searchName {
+  margin: 1em 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  button{
+    display: none;
+  }
+  }
+  .searchLocation{
+    // padding: 1em;
+  }
+}
+}

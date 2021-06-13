@@ -1,0 +1,48 @@
+
+<div class="wrapper ">
+  <div class="formContent">
+    <form [formGroup]="reviewForm">
+    <p id="login" class="question" >Is Social Distancing maintained at the place? </p>
+      <ul class="rating-list">
+        <li (click)="countStar(star,'rating')" [ngClass]="{'selected': (star <= reviewForm.controls['rating'].value)}"
+          *ngFor="let star of stars">
+          <i class="fa fa-star"></i>
+        </li>
+      </ul>
+      <p id="login" class="question" >Is everyone wearing mask at the place?</p>
+      <ul class="rating-list">
+        <li (click)="countStar(star,'rating1')" [ngClass]="{'selected': (star <= reviewForm.controls['rating1'].value)}"
+          *ngFor="let star of stars">
+          <i class="fa fa-star"></i>
+        </li>
+      </ul>
+
+      <p id="login" class="question" >Is sanitizer provided before entering the place?</p>
+      <ul class="rating-list">
+        <li (click)="countStar(star,'rating2')" [ngClass]="{'selected': (star <= reviewForm.controls['rating2'].value)}"
+          *ngFor="let star of stars">
+          <i class="fa fa-star"></i>
+        </li>
+      </ul>
+
+      <p id="login" class="question" >Is temperature checked before entering the place?</p>
+      <ul class="rating-list">
+        <li (click)="countStar(star,'rating3')" [ngClass]="{'selected': (star <= reviewForm.controls['rating3'].value)}"
+          *ngFor="let star of stars">
+          <i class="fa fa-star"></i>
+        </li>
+      </ul>
+
+      <p id="login" class="question" >Is employee at the place wearing PPE kit?</p>
+      <ul class="rating-list">
+        <li (click)="countStar(star,'rating4')" [ngClass]="{'selected': (star <= reviewForm.controls['rating4'].value)}"
+          *ngFor="let star of stars">
+          <i class="fa fa-star"></i>
+        </li>
+      </ul>
+      <p>Comments:</p>
+     <textarea rows="4" cols="50" formControlName="comment"></textarea>
+    </form>
+
+  </div>
+</div>

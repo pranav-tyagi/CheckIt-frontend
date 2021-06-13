@@ -1,0 +1,43 @@
+<div class="shop-card" routerLink="/shop/{{item._id}}" routerLinkActive="router-link-active">
+  <!-- business card display image -->
+  <div class="business-photo">
+    <div class="image">    <img [src]="item.images[0]" alt="Card image cap">
+    </div>
+
+    <div class="cardModal">
+    </div>
+    <div class="tag"  [ngClass]="{'red':state==3,'orange':state==2,'yellow':state==1,'green':state==0}">{{status[state]}}</div>
+  </div>
+  <!-- business details -->
+  <div class="info">
+    <div class="business-name">
+      {{item.organizationName}}
+    </div>
+    <div class="rating">
+      <ng-template #t let-fill="fill">
+        <span class="star" [class.full]="fill === 100">
+          <span class="half" [style.width.%]="fill">
+            <div class="rate-box"><i class="fa fa-star" aria-hidden="true"></i></div>
+          </span>
+          <div class="rate-box"><i class="fa fa-star" aria-hidden="true"></i></div>
+        </span>
+      </ng-template>
+      <ngb-rating [max]="5" [starTemplate]="t" [(rate)]="item.avgRating" [readonly]="true"></ngb-rating>
+      <span class="rate"> {{item.avgRating}} </span>
+      <span class="review-count">({{item.totalReview}} Reviews)</span>
+    </div>
+    <div class="description">
+      {{item.organizationDesc}}
+    </div>
+    <div class="address">
+      {{item.address}},{{item.city}}
+    </div>
+    <div class="capacity-count"  [ngClass]="{'redtag':state==3,'orangetag':state==2,'yellowtag':state==1,'greentag':state==0}">
+      <p>{{item.occupied}}/{{item.covidCapacity}} people are there in this premises</p>
+    </div>
+  </div>
+    <div class="capacity-count"  [ngClass]="{'redtag':state==3,'orangetag':state==2,'yellowtag':state==1,'greentag':state==0}">
+      <p>{{item.occupied}}/{{item.covidCapacity}} people are there in this premises</p>
+    </div>
+
+</div>

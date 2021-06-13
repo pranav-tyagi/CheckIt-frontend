@@ -1,0 +1,28 @@
+.stick{
+  position: fixed;
+  width: 100%;
+  z-index: 10;
+}
+.user-detail-form{
+  margin: 3em;
+  margin-top: 0;
+  padding: 4em;
+  padding-top: 0;
+ // box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+
+  img{
+    height: 20em;
+    display: block;
+    margin: auto;
+  }
+  .heading{
+    text-align: center;
+    text-transform: uppercase;
+    color: #000000;
+    font-weight: normal
+  }
+}
+
+
+
+

@@ -1,0 +1,39 @@
+<app-navbar></app-navbar>
+<div class="container">
+  <div class="form-container">
+    <div class="wrapper" *ngIf="display==false">
+      <h1>User Login</h1>
+        <form class="login-form" [formGroup]="loginForm">
+          <p class="error">{{msg}}</p>
+          <span *ngIf="loginForm.controls['email'].hasError('required') && loginForm.get('email')!.touched" class="error">Please enter your Email</span>
+          <input type="text" placeholder="Email" formControlName="email">
+          <span *ngIf="loginForm.controls['password'].hasError('required') && loginForm.get('password')!.touched" class="error">Please enter your Password</span>
+          <input type="password" placeholder="Password" formControlName="password">
+          <button type="submit" (click)="onSubmit()"  [disabled]="!loginForm.valid">login</button>
+          <p class="message">Not registered? <span (click)="onChange()" >Create an account</span></p>
+        </form>
+      </div>
+
+      <div class="wrapper" *ngIf="display==true">
+        <h1>User Register</h1>
+          <form class="register-form" [formGroup]="registerForm">
+            <span *ngIf="registerForm.controls['name'].hasError('required') && registerForm.get('name')!.touched" class="error">Please enter Name</span>
+            <input type="text" placeholder="name" formControlName="name">
+            <span *ngIf="registerForm.controls['email'].hasError('required') && registerForm.get('email')!.touched" class="error">Please enter Email</span>
+            <input type="email" placeholder="Email" formControlName="email">
+            <span *ngIf="registerForm.controls['password'].hasError('required') && registerForm.get('password')!.touched" class="error">Please enter Password</span>
+            <input type="password" placeholder="Password" formControlName="password">
+            <p class="error">{{error}}</p>
+            <input type="password" placeholder="Confirm Password" (change)="confirmPassword($event)"/>
+            <span *ngIf="registerForm.controls['phoneNumber'].hasError('required') && registerForm.get('phoneNumber')!.touched" class="error">Please enter Phone Number</span>
+            <input type="text" placeholder="Phone Number" formControlName="phoneNumber"/>
+            <button (click)="onRegister()" [disabled]="!(registerForm.valid&&error==='')">Register</button>
+
+            <p class="message">Already registered? <span (click)="onChange()" >Login to account</span></p>
+          </form>
+
+        </div>
+
+  </div>
+
+</div>

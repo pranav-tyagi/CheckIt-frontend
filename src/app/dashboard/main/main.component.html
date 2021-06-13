@@ -1,0 +1,58 @@
+<div class="main">
+  <div class="row heading">
+    <h3>Welcome <span>{{user.ownername}}</span></h3>
+  </div>
+  <div class="content">
+    <div class="weather">
+      <img src="../../../assets/images/day.jpg">
+      <p><span>{{user.state}}</span> {{temperature}}C</p>
+    </div>
+    <div class="stat-board">
+      <div class="stat-cards today">
+        <p class="heading">Today's Visits</p>
+        <p class="count">{{dailyStoreVisits}}</p>
+        <!-- <p class="stat">10% more than yesterday</p> -->
+      </div>
+      <div class="stat-cards week">
+        <p class="heading">Monthly Online Orders</p>
+        <p class="count">{{monthlyStoreVisits}}</p>
+        <!-- <p class="stat">10% more than last week</p> -->
+      </div>
+      <div class="stat-cards month">
+        <p class="heading">Today's Online Orders</p>
+        <p class="count">{{dailyOrdersCount}}</p>
+        <!-- <p class="stat">10% more than last month</p> -->
+      </div>
+      <div class="stat-cards rating">
+        <p class="heading">Your Corona Rating</p>
+        <p class="count">{{user.avgRating}}</p>
+        <p class="stat">{{reviewCount}} Reviews</p>
+      </div>
+    </div>
+
+
+    <div class="active-customers">
+      <h3 class="heading">Customer Table</h3>
+
+      <p class="customer-count"><span>{{allCustomer.length}}/{{user.covidCapacity}}</span>people are there in your Premises</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Mobile</th>
+            <th>Temperature</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let user of customersArr;let i =index" [ngClass]="{'odd': i%2==0,'even': i%2!=0}">
+            <td>{{user.name}}</td>
+            <td>{{user.phoneNumber}}</td>
+            <td>{{user.temperature}}</td>
+          </tr>
+
+      </table>
+      <p class="viewAll" [routerLink]="['/',storeId,'dashboard','work']">View All</p>
+    </div>
+  </div>
+</div>

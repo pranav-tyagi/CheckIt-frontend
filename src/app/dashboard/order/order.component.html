@@ -1,0 +1,138 @@
+<div *ngIf="orders.length==0">No orders</div>
+<div class="order">
+  <div class="accept">
+    <h3 class="heading">Pending</h3>
+    <div *ngIf="pendingOrders.length==0">No orders</div>
+    <div *ngFor="let item of pendingOrders">
+      <div class="card">
+        <div class="cardHeading">
+        <p><span class="bold">Id:</span>{{item._id}}</p>
+        <p><span class="bold">Date:</span>{{item.orderDate}}</p>
+        </div>
+        <div class="cardImage">
+        <p><img [src]="item.orderedItems[0].imgUrl"><span class="bold"> {{item.orderedItems[0].productName}} +{{item.totalQty-1}} more items</span></p>
+      </div>
+      <div class="cardContent">
+        <p><span class="bold">Order Amount:</span>${{item.totalCost}}</p>
+        <p><span class="bold">Customer Name:</span>{{item.customerName}}</p>
+      </div>
+      <div class="options">
+        <button class="viewOrder" (click)="viewOrder(item)" mat-stroked-button color="accent">View Order</button>
+        <button class="accept" (click)="changeOrderStatus(item,'accept')" mat-stroked-button color="primary">Accept</button>
+        <button class="reject" (click)="changeOrderStatus(item,'reject')" mat-stroked-button color="warn">Reject</button>
+      </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pending">
+    <h3 class="heading">Accepted</h3>
+    <div *ngIf="acceptOrders.length==0">No orders</div>
+    <div *ngFor="let item of acceptOrders">
+      <div class="card">
+        <div class="cardHeading">
+          <p><span class="bold">Id:</span>{{item._id}}</p>
+          <p><span class="bold">Date:</span>{{item.orderDate}}</p>
+        </div>
+        <div class="cardImage">
+        <p><img [src]="item.orderedItems[0].imgUrl"><span class="bold"> {{item.orderedItems[0].productName}} +{{item.totalQty-1}} more items</span></p>
+      </div>
+      <div class="cardContent">
+        <p><span class="bold">Order Amount:</span>${{item.totalCost}}</p>
+        <p><span class="bold">Customer Name:</span>{{item.customerName}}</p>
+      </div>
+      <div class="options">
+        <button class="viewOrder" (click)="viewOrder(item)" mat-stroked-button color="accent">View Order</button>
+        <button class="accept" (click)="changeOrderStatus(item,'complete')" mat-stroked-button color="primary">Complete</button>
+      </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="complete">
+    <h3 class="heading">Complete</h3>
+    <div *ngIf="completeOrders.length==0">No orders</div>
+    <div *ngFor="let item of completeOrders">
+      <div class="card">
+        <div class="cardHeading">
+          <p><span class="bold">Id:</span>{{item._id}}</p>
+          <p><span class="bold">Date:</span>{{item.orderDate}}</p>
+        </div>
+        <div class="cardImage">
+        <p><img [src]="item.orderedItems[0].imgUrl"><span class="bold"> {{item.orderedItems[0].productName}} +{{item.totalQty-1}} more items</span></p>
+      </div>
+      <div class="cardContent">
+        <p><span class="bold">Order Amount:</span>${{item.totalCost}}</p>
+        <p><span class="bold">Customer Name:</span>{{item.customerName}}</p>
+      </div>
+      <div class="options">
+        <button class="viewOrder" (click)="viewOrder(item)" mat-stroked-button color="accent">View Order</button>
+        <button class="accept" (click)="changeOrderStatus(item,'finish')" mat-stroked-button color="primary">Picked</button>
+      </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<div class="backdrop" *ngIf="displayOrder==1">
+  <p (click)="close()" class="close">Close</p>
+  <div class="orderDetails">
+    <div class="details">
+      <div class="heading">Order Summary</div>
+
+
+      <div class="items" *ngFor="let item of order.orderedItems">
+          <div class="card">
+            <div class="cardImage">
+              <img [src]="item.imgUrl">
+            </div>
+            <div class="cardContent">
+              <h3>{{item.productName}}</h3>
+            <p><span class="bold">Item Id:</span>{{item._id}}</p>
+            <p><span class="bold">Amount:</span>₹{{item.price}}</p>
+          </div>
+          <div><p><span class="bold">Order Date:</span>{{order.orderDate}}</p></div>
+          </div>
+      </div>
+
+
+    </div>
+
+  <div class="summary" [ngClass]="{'fix':stick==true}">
+    <div class="status">
+      <p>Order Status</p>
+      <p class="highlight">{{order.status}}</p>
+    </div>
+    <div class="moreDeatils">
+      <p><span class="bold">Order Id:</span>{{order._id}}</p>
+      <p><span class="bold">Customer Name:{{order.customerName}}</span></p>
+      <p><span class="bold">Customer Phone:</span>{{order.customerNumber}}</p>
+    </div>
+    <div class="bill">
+      <div class="heading">Price Details</div>
+      <div class="content">
+        <div class="price" *ngFor="let item of order.orderedItems">
+          <div class="itemPrice">
+            <p>{{item.productName}} x {{item.qty}}</p>
+            <p>₹{{item.price}}</p>
+          </div>
+        </div>
+        <div class="totalPrice">
+          <p>Total({{order.totalQty}} items)</p>
+          <p>₹{{order.totalCost}}</p>
+        </div>
+      </div>
+    </div>
+
+
+    </div>
+  </div>
+</div>
+
+<div *ngIf="loading==1" class="backdrop">
+  <mat-spinner class="spinner"></mat-spinner>
+</div>
+
+

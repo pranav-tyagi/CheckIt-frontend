@@ -1,0 +1,135 @@
+<h4 class="title">Inventory</h4>
+<div class="inventory">
+
+  <div class="category">
+    <ul>
+      <li class="heading">Categories</li>
+      <li [ngClass]="{'active':selectedCategory==i}" *ngFor="let category of categoryItems;let i=index">
+        <div class="name" (click)="getItems(i)">
+          <i class="fa fa-caret-right view" aria-hidden="true"></i>
+          {{category.categoryName}}
+        </div>
+        <div class="options">
+          <i class="fa fa-trash-o" aria-hidden="true" (click)="askToDeleteCategory(category.id)"></i>
+          <i class="fa fa-pencil-square-o" aria-hidden="true"
+            (click)="displayEditCategoryForm(category.categoryName)"></i>
+        </div>
+      </li>
+      <li class="add" (click)="displayAddCategoryForm()">+ Add Menu Category</li>
+    </ul>
+  </div>
+  <div class="item">
+    <ul *ngIf="selectedCategory!=-1">
+      <li class="heading">{{categoryItems[selectedCategory].categoryName}}</li>
+      <li *ngFor="let item of categoryItems[selectedCategory].itemArr">
+
+        <p>{{item.productName}}</p>
+        <p>₹{{item.price}}</p>
+        <img [src]="item.imgUrl" class="itemImage">
+        <p [ngClass]="{'available':item.inStock==true,'unavailable':item.inStock!=true}"></p>
+        <div class="options">
+          <i class="fa fa-trash-o" aria-hidden="true" (click)="askToDeleteItem(item._id)"></i>
+          <i class="fa fa-pencil-square-o" aria-hidden="true" (click)="displayEditItemForm(item)"></i>
+        </div>
+      </li>
+      <li class="add" (click)="displayAddItemForm()">+ Add Item</li>
+    </ul>
+
+  </div>
+</div>
+
+<div class="backdrop" *ngIf="formDisplay==1">
+  <div class="close" (click)="cancel()"><i class="fa fa-times" aria-hidden="true"></i></div>
+  <form class="row" [formGroup]="categoryForm">
+    <h3><span class="operation">{{categoryFormOperation}}</span> Category</h3>
+    <mat-form-field class="col-12">
+      <input matInput placeholder="Name" formControlName="categoryName">
+    </mat-form-field>
+    <div class="row btns">
+      <div class="col-md-6">
+        <button type="submit" (click)="cancel()" class="btn cancel">Cancel</button>
+      </div>
+      <div class="col-md-6">
+        <button type="submit" class="btn" (click)="submitCategory()">Submit</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+
+<div class="backdrop" *ngIf="formDisplay==2">
+  <div class="close" (click)="cancel()"><i class="fa fa-times" aria-hidden="true"></i></div>
+  <form class="row" [formGroup]="itemForm">
+    <h3><span class="operation">{{itemFormOperation}}</span> Item</h3>
+    <mat-form-field class="col-12">
+      <input matInput placeholder="Product Name" formControlName="productName">
+    </mat-form-field>
+    <mat-form-field class="col-6">
+      <input matInput placeholder="Price" formControlName="price">
+    </mat-form-field>
+    <mat-slide-toggle [color]="color" [checked]="checked" [disabled]="disabled" formControlName="inStock">
+      Available
+    </mat-slide-toggle>
+    <div class="row imageUpload">
+      <input type = "file" (change) = "upload($event)" accept = "*.png,.jpg,.jpeg">
+      <button (click)="uploadImage()">Upload Image</button>
+      <img src="../../../assets/spinner.gif" *ngIf="imageUploadLoader==1">
+    </div>
+    <img class="productImage" [src]="itemForm.controls['imgUrl'].value">
+    <div class="row btns">
+      <div class="col-md-6">
+        <button type="submit" (click)="cancel()" class="btn cancel">Cancel</button>
+      </div>
+      <div class="col-md-6">
+        <button type="submit" class="btn" (click)="submitItem()">Submit</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<div class="backdrop" *ngIf="formDisplay==3">
+  <div class="close" (click)="cancel()"><i class="fa fa-times" aria-hidden="true"></i></div>
+  <form class="row" [formGroup]="itemForm">
+    <p>Are you sure you want to delete Category??</p>
+    <div class="row btns">
+      <div class="col-md-6">
+        <button type="submit" (click)="donotDelete()" class="btn cancel">Cancel</button>
+      </div>
+      <div class="col-md-6">
+        <button type="submit" class="btn" (click)="deleteCategory()">Yes</button>
+      </div>
+    </div>
+  </form>
+
+</div>
+
+
+<div class="backdrop" *ngIf="formDisplay==4">
+  <div class="close" (click)="cancel()"><i class="fa fa-times" aria-hidden="true"></i></div>
+  <form class="row" [formGroup]="itemForm">
+    <p>Are you sure you want to delete Item??</p>
+    <div class="row btns">
+      <div class="col-md-6">
+        <button type="submit" (click)="donotDelete()" class="btn cancel">Cancel</button>
+      </div>
+      <div class="col-md-6">
+        <button type="submit" class="btn" (click)="deleteItem()">Yes</button>
+      </div>
+    </div>
+  </form>
+</div>
+<div class="backdrop" *ngIf="formDisplay==5">
+  <div class="close" (click)="cancel()"><i class="fa fa-times" aria-hidden="true"></i></div>
+  <form class="row" [formGroup]="itemForm">
+    <p>{{msg}}</p>
+    <div class="row btns">
+      <div class="col-md-12">
+        <button type="submit" class="btn" (click)="cancel()">OK</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<div *ngIf="loading==1" class="backdrop">
+  <mat-spinner class="spinner"></mat-spinner>
+</div>

@@ -1,0 +1,114 @@
+<div class="options">
+  <!-- <button>Today</button>
+  <button>History</button> -->
+</div>
+<div class="active-customers">
+  <h3 class="heading">Customer Table</h3>
+  <p class="customer-count"><span>{{users.length}}/{{user.covidCapacity}}</span>people are there in your Premises</p>
+  <!-- <button (click)="enterUser()" class="btn enter-customer">Enter Customer</button> -->
+  <button (click)="addUser()" class="btn add-customer">Add Customer</button>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Mobile</th>
+        <th>Temperature</th>
+        <th>Aarogya Status</th>
+        <th>Options</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let user of users;let i =index" [ngClass]="{'odd': i%2==0,'even': i%2!=0}">
+        <td>{{user.name}}</td>
+        <td>{{user.phoneNumber}}</td>
+        <td>{{user.temperature}}</td>
+        <td>{{user.aarogyaSetu}}</td>
+
+        <td class="options"><button (click)="leave(user._id)" class="btn leave"><i class="fa fa-level-up" aria-hidden="true"></i></button>
+          <button (click)="editUser(i)" class="btn edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+          <button (click)="deleteUser(user._id)" class="btn delete"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+        </td>
+      </tr>
+
+  </table>
+</div>
+
+<div class="backdrop" *ngIf="formDisplay==1">
+  <div class="close" (click)="cancel()"><i class="fa fa-times" aria-hidden="true"></i></div>
+  <form class="row g-3" [formGroup]="customerForm">
+    <h3><span class="operation">{{operation}}</span> Customer Information</h3>
+    <div class="row">
+      <div class="col-md-6">
+        <label class="form-label">Name </label>
+        <input type="text" class="form-control" formControlName="name">
+      </div>
+
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <label class="form-label">Phone Number</label>
+      <input type="text" class="form-control" formControlName="phoneNumber">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <label class="form-label">Temperature</label>
+      <input type="text" class="form-control" formControlName="temperature">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <label class="form-label">Aarogya Setu</label>
+      <select class="form-control" formControlName="aarogyaSetu">
+        <option *ngFor = "let status of aarogyaSetuStatus;let i = index" [value] = 'status'>{{status}}</option>
+      </select>
+      <!-- <input type="text" class="form-control" formControlName="aarogyaSetu"> -->
+    </div>
+  </div>
+    <div class="row btns">
+      <div class="col-md-6">
+        <button type="submit" (click)="cancel()" class="btn cancel">Cancel</button>
+      </div>
+      <div class="col-md-6">
+        <button type="submit" class="btn" (click)="submit()">Submit</button>
+      </div>
+
+    </div>
+
+  </form>
+
+</div>
+
+
+<!-- <div class="backdrop" *ngIf="formDisplay==2">
+  <div class="close" (click)="cancel()"><i class="fa fa-times" aria-hidden="true"></i></div>
+  <form class="row g-3" [formGroup]="entryForm">
+    <h3><span class="operation">Enter</span> Customer Information</h3>
+    <div class="row">
+      <div class="col-md-6">
+        <label class="form-label">Email</label>
+        <input type="text" class="form-control" formControlName="email">
+      </div>
+    </div>
+  <div class="row">
+    <div class="col-md-6">
+      <label class="form-label">Temperature</label>
+      <input type="text" class="form-control" formControlName="temperature">
+    </div>
+  </div>
+
+    <div class="row btns">
+    <div class="col-md-6">
+      <button type="submit" (click)="cancel()" class="btn cancel">Cancel</button>
+    </div>
+    <div class="col-md-6">
+      <button type="submit" class="btn" (click)="userEntry()">Submit</button>
+    </div>
+  </div>
+  </form>
+
+</div> -->
+<div *ngIf="loading==1" class="backdrop">
+  <mat-spinner class="spinner"></mat-spinner>
+</div>

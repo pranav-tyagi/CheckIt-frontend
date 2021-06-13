@@ -1,0 +1,67 @@
+<form class="row g-3 user-detail-form" [formGroup]="accountForm">
+  <div class="col-md-6">
+    <label class="form-label">Your Name <span
+      *ngIf="
+        accountForm.controls['ownername'].hasError('required') &&
+        accountForm.get('ownername')!.touched
+      "
+      class="error-msg"
+      >(Please enter your Name)</span></label>
+    <input type="text" class="form-control" formControlName="ownername">
+  </div>
+  <div class="col-md-6">
+    <label class="form-label">Organization Name<span
+      *ngIf="
+        accountForm.controls['organizationName'].hasError('required') &&
+        accountForm.get('organizationName')!.touched
+      "
+      class="error-msg"
+      >(Please enter Organization Name)</span></label>
+    <input type="text" class="form-control" formControlName="organizationName">
+  </div>
+
+  <div class="col-md-6">
+    <label class="form-label">Email</label>
+    <input type="text" class="form-control" formControlName="email" readonly>
+  </div>
+  <div class="col-md-6">
+    <label class="form-label">Contact Number</label>
+    <input type="text" class="form-control" formControlName="phoneNumber" >
+  </div>
+  <div class="col-md-6">
+    <label class="form-label">Type</label>
+    <select class="form-control" formControlName="type">
+      <option></option>
+      <option *ngFor="let item of types" [value]="item">{{item}}</option>
+    </select>
+  </div>
+  <div class="col-md-12">
+    <label class="form-label">Organization Address</label>
+    <input type="text" class="form-control" formControlName="address">
+  </div>
+  <div class="col-md-6">
+    <label class="form-label">City</label>
+    <input type="text" class="form-control" formControlName="city">
+  </div>
+  <div class="col-md-6">
+    <label class="form-label">State</label>
+    <input type="text" class="form-control" formControlName="state">
+  </div>
+  <div class="col-md-6">
+    <label class="form-label">Pin Code</label>
+    <input type="text" class="form-control" formControlName="pincode">
+  </div>
+  <div class="col-md-12">
+    <label>About Organization</label>
+    <textarea type="text" class="form-control" formControlName="organizationDesc"></textarea>
+
+  </div>
+  <div class="col-12 btns">
+  <div class="col-md-6">
+    <button class="btn back" (click)="back()" disabled>Back</button>
+  </div>
+  <div class="col-md-6">
+    <button class="btn" (click)="next()">Next</button>
+  </div>
+</div>
+</form>

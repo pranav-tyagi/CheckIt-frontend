@@ -1,0 +1,37 @@
+<div class="container">
+<div class="filter">
+  <div class=" row types">
+    <div class="type" (click)="setFilter('place')" [ngClass]="{'active':filter=='place'}">
+      <div class="type-img"><img src="../../assets/images/place.png"></div>
+      <p>All</p>
+    </div>
+    <div class="type" (click)="setFilter('shop')" [ngClass]="{'active':filter=='shop'}">
+      <div class="type-img"><img src="../../assets/images/store.png"></div>
+      <p>Shops</p>
+    </div>
+    <div class=" type" (click)="setFilter('hospital')" [ngClass]="{'active':filter=='hospital'}">
+      <div class="type-img"><img src="../../assets/images/hospital.png"></div>
+      <p>Hospitals</p>
+    </div>
+    <div class="type" (click)="setFilter('office')" [ngClass]="{'active':filter=='office'}">
+      <div class="type-img"><img src="../../assets/images/office.png"></div>
+      <p>Offices</p>
+    </div>
+    <div class="type" (click)="setFilter('restaurant')" [ngClass]="{'active':filter=='restaurant'}">
+      <div class="type-img"><img src="../../assets/images/cutlery.png"></div>
+      <p>Restaurants</p>
+    </div>
+    <div class="type" (click)="setFilter('mall')" [ngClass]="{'active':filter=='mall'}">
+      <div class="type-img"><img src="../../assets/images/shopping-mall.png"></div>
+      <p>Malls</p>
+    </div>
+  </div>
+</div>
+
+<div class="header">
+  <h3><span class="highlight">{{filter}}s</span> near you</h3> 
+</div>
+    <div class="cards-shop">
+<app-card *ngFor="let item of shop;let i=index" [item]="item" [i]="i"></app-card>
+</div>
+</div>

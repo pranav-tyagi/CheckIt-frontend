@@ -1,0 +1,53 @@
+runtime: python27
+api_version: 1
+threadsafe: yes
+service: covid-app-frontend
+instance_class: B1
+manual_scaling:
+        instances: 1
+handlers:
+- url: /(.+\.js)
+  static_files: dist/covid-app/\1
+  upload: dist/covid-app/(.+\.js)
+
+- url: /(.+\.css)
+  static_files: dist/covid-app/\1
+  upload: dist/covid-app/(.+\.css)
+
+- url: /(.+\.png)
+  static_files: dist/covid-app/\1
+  upload: dist/covid-app/(.+\.png)
+
+- url: /(.+\.jpg)
+  static_files: dist/covid-app/\1
+  upload: dist/covid-app/(.+\.jpg)
+
+- url: /(.+\.svg)
+  static_files: dist/covid-app/\1
+  upload: dist/covid-app/(.+\.svg)
+
+- url: /favicon.ico
+  static_files: dist/covid-app/favicon.ico
+  upload: dist/covid-app/favicon.ico
+
+- url: /(.+\.json)
+  static_files: dist/covid-app/\1
+  upload: dist/covid-app/(.+\.json)
+
+- url: /(.+)
+  static_files: dist/covid-app/index.html
+  upload: dist/covid-app/index.html
+
+- url: /
+  static_files: dist/covid-app/index.html
+  upload: dist/covid-app/index.html
+
+skip_files:
+  - e2e/
+  - node_modules/
+  - src/
+  - ^(.*/)?\..*$
+  - ^(.*/)?.*\.json$
+  - ^(.*/)?.*\.md$
+  - ^(.*/)?.*\.yaml$
+  - ^LICENSE

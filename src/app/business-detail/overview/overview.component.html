@@ -1,0 +1,35 @@
+<!-- covid precations -->
+<div class="policies container">
+  <h3 class="heading">Covid Precautions</h3>
+  <div *ngIf="business.sanitization"><div class="image"><img src="../../../assets/images/spray.png"></div> <div><span class="subheading">Sanitization</span>We do sanitization properly on regular basis</div></div>
+  <div *ngIf="business.socialDistancingCheck"><div class="image"><img src="../../../assets/images/keep-distance.png"></div><div><span class="subheading">Social Distancing</span>We keep check of social distancing in our premises</div></div>
+  <div *ngIf="business.safetyKit"><div class="image"><img src="../../../assets/images/medical-mask.png"></div><div><span class="subheading">Mask and PPE Kits</span>All our employees uses mask and PPE Kits</div></div>
+  <div  *ngIf="business.temperatureCheck"><div class="image"><img src="../../../assets/images/thermometer.png"></div> <div><span class="subheading">Temperature Check</span>We check temperature of each person entering in our premises</div></div>
+  <div *ngIf="business.organizationCovidDesc!=null&&business.organizationCovidDesc!=''"><div class="image"><img src="../../../assets/images/no-virus.png"></div> <div><span class="subheading">Other Precautions</span>{{business.organizationCovidDesc}}</div></div>
+</div >
+<!-- employee details -->
+<div class="employee container">
+  <h3>Employee Details:</h3>
+  <div class="detail">
+    <div class="row col-md-12">
+      <table  class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Temperature</th>
+            <!-- <th scope="col">Time</th> -->
+          </tr>
+        </thead>
+        <tbody >
+          <tr *ngFor="let emp of employee let i=index">
+            <th scope="row">{{i+1}}</th>
+            <td>{{emp.name}}</td>
+            <td>{{emp.temperature}}</td>
+            <!-- <td>9:00a.m</td> -->
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div >

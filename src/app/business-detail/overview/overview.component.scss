@@ -1,0 +1,55 @@
+.policies{
+  margin-top: 1em;
+  border-radius: 0.5em;
+  background-color: #fff;
+  padding: 1em;
+  color: #757575;
+  .heading{
+    padding-top: 0.5rem;
+    font-size: 1.2rem;
+    font-weight: 700;
+  }
+  >div{
+    display: flex;
+    margin: 0.8em 0;
+    font-size: 14px;
+  }
+  .subheading{
+    font-size: 16px;
+    font-weight: 500;
+    display: block;
+  }
+  .image{
+    height: 3.5em;
+    width: 3.5em;
+    border-radius: 50%;
+    background-color: #fff5da;
+    margin-right: 0.8em;
+  }
+  img{
+    height: 1.75em;
+    margin: auto;
+    display: block;
+    transform: translateY(50%);
+  }
+
+}
+.employee {
+  margin-top: 1em;
+  border-radius: 0.5em;
+  background-color: #fff;
+  color: #757575;
+
+  h3{
+    padding-top: 0.5rem;
+    font-size: 1.2rem;
+    font-weight: 700;
+  }
+  .detail{
+    display: flex;
+    table{
+      margin: 1rem 0.7rem;
+      border-radius: 0.5rem ;
+    }
+  }
+}

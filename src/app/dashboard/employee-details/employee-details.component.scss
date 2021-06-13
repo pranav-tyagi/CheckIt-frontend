@@ -1,0 +1,144 @@
+.header{
+  display: flex;
+  justify-content: space-between;
+}
+.header {
+  img {
+    width: 100%;
+    height: 45vh;
+    position: relative;
+    border-radius: 0.4rem;
+  }
+  h2 {
+    position: absolute;
+    top: 59%;
+    left: 60%;
+    text-decoration: underline;
+    transform: translate(-50%, -50%);
+    background-color: white;
+  }
+}
+.buttons {
+  .enterEmp {
+    margin-right: 1em;
+    font-size: 12px;
+    font-weight: 900;
+    cursor: pointer;
+    border: 2px solid rgb(237, 90, 107);
+    color: rgb(237, 90, 107);
+    padding: 0.4em;
+    &:hover {
+      color: #fff;
+      background-color: rgb(237, 90, 107);
+    }
+  }
+  .enterTemp {
+    font-size: 12px;
+    font-weight: 900;
+    cursor: pointer;
+    border: 2px solid rgb(237, 90, 107);
+    color: rgb(237, 90, 107);
+    padding: 0.4em;
+    &:hover {
+      color: #fff;
+      background-color: rgb(237, 90, 107);
+    }
+  }
+  .photo{
+    display: flex;
+    flex-direction: row;
+    label{
+      padding: 1rem;
+    }
+    input{
+      padding: 1rem 0rem;
+    }
+  }
+  .modal-footer {
+    .save{
+      color: white;
+      background-color: rgb(237, 90, 107);
+      border: none;
+    }
+    .save:hover{
+      background-color: rgb(231, 37, 59);
+    }
+  }
+}
+.employeeList {
+  margin: 1rem 0;
+  .heading {
+    font-weight: 700;
+    font-size: 18px;
+    margin: 0;
+  }
+}
+.table-striped{
+  margin: 0;
+  padding: 1rem;
+}
+th{
+  font-size: large;
+  font-weight: bold;
+}
+.modal-title{
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin: 0;
+}
+.filter{
+  width:20rem;
+}
+.editButton{
+  border: 0;
+  background-color: transparent;
+}
+
+
+.save{
+  color: white;
+  background-color: rgb(237, 90, 107);
+  border: none;
+}
+
+table {
+  width: 100%;
+  padding: 1em;
+  text-align: center;
+  background-color: #fff;
+  padding: 1em;
+  thead {
+    th {
+      font-size: 14px;
+      padding: 1em;
+    }
+  }
+  tbody {
+    tr {
+      line-height: 3em;
+      td {
+        font-size: 12px;
+        text-overflow: ellipsis;
+      }
+    }
+    .odd {
+      background: #fff5ee;
+    }
+   .options{
+     .btn{
+       margin: 0 0.25em;
+       color: #000000;
+      // text-shadow:  2px 2px #000000
+     }
+     .leave{
+      background-color: #80b3ff
+     }
+     .edit{
+      background-color: #ffe680;
+     }
+     .delete{
+       background-color:#ff8080
+     }
+   }
+  }
+}

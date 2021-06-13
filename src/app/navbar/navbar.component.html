@@ -1,0 +1,43 @@
+<nav class="navbar navbar-expand-lg  justify-content-between header">
+
+  <a [routerLink]="['/home']" class="logo" ><i class="fa fa-check-square-o" aria-hidden="true"></i>Checkit</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <div class="mr-auto"></div>
+      <ul class="navbar-nav options">
+        <li class="nav-item"  >
+          <a class="nav-link" [routerLink]="['home']" >Home</a>
+        </li>
+        <!-- <li class="nav-item" >
+          <a class="nav-link"[routerLink]="['/team']" >About</a>
+        </li> -->
+        <li class="nav-item" *ngIf="isLoggedBusinessIn && isBusiness" >
+          <a class="nav-link"[routerLink]="['/',userId,'dashboard']">Dashboard</a>
+        </li>
+        <li class="nav-item" *ngIf="isLoggedUserIn && isCustomer" >
+          <a class="nav-link" [routerLink]="['/userHistory']">Order History</a>
+        </li>
+        <!-- <li class="nav-item dropdown" *ngIf="isAuthenticated==false">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Features
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown" >
+            <a class="dropdown-item" [routerLink]="['/userHistory']" >Orders</a>
+            <a class="dropdown-item"[routerLink]="['/donate-plasma']" >Donate Plasma</a>
+            <a class="dropdown-item"[routerLink]="['']" >View stats</a>
+          </div>
+        </li> -->
+        <li class="nav-item" *ngIf="!isLoggedUserIn && !isLoggedBusinessIn">
+          <a class="nav-link singup" [routerLink]="['/userLogin']" routerLinkActive="router-link-active">SignUp</a>
+        </li>
+        <li class="nav-item" *ngIf="isLoggedUserIn && isCustomer">
+          <a class="nav-link singup" [routerLink]="['/home']" (click) = "logoutUser()">Logout</a>
+        </li>
+        <li class="nav-item" *ngIf="isLoggedBusinessIn && isBusiness">
+          <a class="nav-link singup" [routerLink]="['/home']" (click) = "logoutBusiness()">Logout</a>
+        </li>
+      </ul>
+    </div>
+</nav>

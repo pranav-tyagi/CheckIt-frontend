@@ -1,0 +1,38 @@
+<div class="wrapper">
+  <app-navbar style="width: 100%;"></app-navbar>
+<div class="container">
+  <h1>Order History</h1>
+    <div class="card row" *ngFor="let item of orders" (click)="showDeatil(item._id)">
+      <mat-card style="background-color: white;" class="main-card ">
+        <mat-card-content class="main" >
+          <img mat-card-image [src]="item.orderedItems[0].imgUrl" class="image col-md-2">
+          <div class="specification col-md-5 ">
+            <span><h2 *ngIf="item.orderedItems[0].qty==1">{{item.orderedItems[0].productName}}
+              <span *ngIf="item.totalQty>1"> +{{item.totalQty-1}} more item(s)</span></h2></span>
+            <h4 class="text-muted">Order Id : {{item._id}}</h4>
+            <h4 class="text-muted">Seller Name : {{item.storeName}}</h4>
+          </div>
+          <div class="col-md-3 cost">
+            <h3> &#8377; {{item.totalCost}}</h3>
+          </div>
+          <div class="status col-md-2 ">
+            <h3><span class="{{item.status}}"></span> {{item.status}}</h3>
+            <p>Your Item is {{item.status}}</p>
+            <!-- <h2 *ngIf="item.status=='complete'"> &#9733; Rate the Product</h2> -->
+          </div>
+          <div class="responsive-status">
+            <div class="col-md-3 cost">
+              <h3> &#8377; {{item.totalCost}}</h3>
+            </div>
+            <div class="status col-md-2 ">
+              <h3><span class="{{item.status}}"></span> {{item.status}}</h3>
+              <h2 *ngIf="item.status=='finish'"> &#9733; Rate and Review Product</h2>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+</div>
+<app-footer></app-footer>
+</div>
+

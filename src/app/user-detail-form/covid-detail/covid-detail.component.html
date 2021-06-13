@@ -1,0 +1,54 @@
+<form class="row g-3 user-detail-form" [formGroup]="covidForm">
+  <div class="col-md-6">
+    <label>Capacity</label>
+    <input type="number" class="form-control" formControlName="capacity">
+  </div>
+  <div class="col-md-12 checkBoxes">
+
+    <div class="row">
+    <div class="col-md-6">
+      <label>Answer Some Questions</label>
+      <div class="col-md-12">
+        <input type="checkbox" class="form-check-input" value="true" formControlName="temperatureCheck">
+        <label for="">Do you check body temperature of each customer before entry?</label>
+      </div>
+      <div class="col-md-12">
+        <input type="checkbox" class="form-check-input" value="true" formControlName="sanitization">
+        <label for="">Do you sanitize the organization premises time to time?</label>
+      </div>
+      <div class="col-md-12">
+        <input type="checkbox" class="form-check-input" value="true" formControlName="socialDistancingCheck">
+        <label for="">Do you keep check of social Distancing in your organization?</label>
+      </div>
+      <div class="col-md-12">
+        <input type="checkbox" class="form-check-input" value="true" formControlName="safetyKit">
+        <label for="">Do you use mask and PPE kits?</label>
+      </div>
+    </div>
+
+
+    <div class="col-md-6 form-img" >
+      <img src="../../../assets/images/stop.jpg">
+    </div>
+  </div>
+
+  </div>
+
+  <div class="col-md-12">
+    <label>Add more Covid Policies you have</label>
+    <textarea type="text" class="form-control" formControlName="organizationCovidDesc"></textarea>
+
+  </div>
+
+
+
+
+  <div class="col-12 btns">
+    <div class="col-md-6">
+      <button type="submit" class="btn" (click)="back()">Back</button>
+    </div>
+    <div class="col-md-6">
+      <button type="submit" class="btn" (click)="next()">Next</button>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,145 @@
+<app-navbar></app-navbar>
+<div class="card-detail" *ngIf="business!=null">
+  <div class="container details">
+    <!-- images of business in grid format -->
+    <div class="business-photo">
+      <img class="tall" [src]="business.images[0]" alt="image not loading">
+      <img [src]="business.images[1]" alt="image not loading">
+      <img [src]="business.images[2]" alt="image not loading">
+      <img [src]="business.images[3]" alt="image not loading">
+      <img [src]="business.images[4]" alt="image not loading">
+    </div>
+    <!-- business deatils -->
+    <div class="top">
+      <div class="business-detail">
+        <div>
+          <h3 class="highlight" >{{business.organizationName}}</h3>
+          <div class="description">
+            {{business.organizationDesc}}
+          </div>
+        </div>
+
+        <div class="direction">
+
+          <span class="address">{{business.address}} | {{business.city}} | </span>
+          <a target="_blank" [href]='address'><span class="fa fa-map-marker"></span> Direction</a>|<button type="button"
+            class="btn review" data-toggle="modal" data-target="#exampleModal">
+            <span class="fa fa-star"></span>
+            Add Review
+          </button>
+
+          <!-- ReviewModal -->
+          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Feedback Form</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <!-- <app-review-form></app-review-form> -->
+                  <div class="wrapper ">
+                    <div class="formContent">
+                      <form [formGroup]="reviewForm">
+                      <p id="login" class="question" >Is Social Distancing maintained at the place? </p>
+                        <ul class="rating-list">
+                          <li (click)="countStar(star,'rating')" [ngClass]="{'selected': (star <= reviewForm.controls['rating'].value)}"
+                            *ngFor="let star of stars">
+                            <i class="fa fa-star"></i>
+                          </li>
+                        </ul>
+                        <p id="login" class="question" >Is everyone wearing mask at the place?</p>
+                        <ul class="rating-list">
+                          <li (click)="countStar(star,'rating1')" [ngClass]="{'selected': (star <= reviewForm.controls['rating1'].value)}"
+                            *ngFor="let star of stars">
+                            <i class="fa fa-star"></i>
+                          </li>
+                        </ul>
+
+                        <p id="login" class="question" >Is sanitizer provided before entering the place?</p>
+                        <ul class="rating-list">
+                          <li (click)="countStar(star,'rating2')" [ngClass]="{'selected': (star <= reviewForm.controls['rating2'].value)}"
+                            *ngFor="let star of stars">
+                            <i class="fa fa-star"></i>
+                          </li>
+                        </ul>
+
+                        <p id="login" class="question" >Is temperature checked before entering the place?</p>
+                        <ul class="rating-list">
+                          <li (click)="countStar(star,'rating3')" [ngClass]="{'selected': (star <= reviewForm.controls['rating3'].value)}"
+                            *ngFor="let star of stars">
+                            <i class="fa fa-star"></i>
+                          </li>
+                        </ul>
+
+                        <p id="login" class="question" >Is employee at the place wearing PPE kit?</p>
+                        <ul class="rating-list">
+                          <li (click)="countStar(star,'rating4')" [ngClass]="{'selected': (star <= reviewForm.controls['rating4'].value)}"
+                            *ngFor="let star of stars">
+                            <i class="fa fa-star"></i>
+                          </li>
+                        </ul>
+                        <p>Comments:</p>
+                       <textarea rows="4" cols="50" formControlName="comment"></textarea>
+                      </form>
+
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn submit" data-dismiss="modal" (click)="submitReview()" [ngClass]="{'disables':!isLoggedin}">Submit</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="rating">
+          <ng-template #t let-fill="fill">
+            <span class="star" [class.full]="fill === 100">
+              <span class="half" [style.width.%]="fill">
+                <div class="rate-box"><i class="fa fa-star" aria-hidden="true"></i></div>
+              </span>
+              <div class="rate-box"><i class="fa fa-star" aria-hidden="true"></i></div>
+            </span>
+          </ng-template>
+          <ngb-rating [max]="5" [starTemplate]="t" [(rate)]="business.avgRating" [readonly]="true"></ngb-rating>
+          <span class="rate"> {{business.avgRating}} </span>
+          <span class="review-count">({{business.totalReview}} Reviews)</span>
+        </div>
+      </div>
+      <div class="bar">
+        <circle-progress [percent]="(business.occupied*100)/business.covidCapacity" [radius]="25" [outerStrokeWidth]="3"
+          [innerStrokeWidth]="2" [space]="2" [outerStrokeColor]="'#78C000'" [innerStrokeColor]="'#C7E596'"
+          [titleFontSize]="8" [titleColor]="'#bdbdbd'" [unitsColor]="'#bdbdbd'" [unitsFontSize]="10"
+          [subtitleFontSize]="6" [subtitleColor]="'#000000'" [subtitle]="'Occupied'" [showSubtitle]="true"
+          [animation]="true" [animationDuration]="1000" [startFromZero]="false" [responsive]="true"></circle-progress>
+      </div>
+    </div>
+
+  </div>
+  <div class="filter container">
+    <div class="option">
+      <div [routerLink]="['/','shop',business._id]" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+        Overview </div>
+      <div [routerLink]="['/','shop',business._id,'orderonline']" routerLinkActive="active" *ngIf="business.type=='shop'||business.type=='restaurant'">Order Online</div>
+      <div [routerLink]="['/','shop',business._id,'review']" routerLinkActive="active"> Review</div>
+    </div>
+  </div>
+  <router-outlet></router-outlet>
+  <!-- similar places -->
+  <div class=" similar container">
+    <h3 class="heading">You May Also Like</h3>
+    <div class="grid ">
+      <div *ngFor="let item of shop">
+        <app-card [item]="item"></app-card>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>
+
+

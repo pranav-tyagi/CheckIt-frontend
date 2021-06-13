@@ -1,0 +1,212 @@
+.order-online {
+  margin-top: 1em;
+  border-radius: 0.5em;
+  background-color: #fff;
+  padding: 1em;
+
+  .category {
+    padding: 0;
+    padding-top: 2rem;
+    height: 80vh;
+    overflow: scroll;
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    border-right: 0.1rem solid #e9e9eb;
+    &::-webkit-scrollbar {
+      width: 0;
+    }
+
+    .category-item {
+       padding: 0.25em 1.6rem 0.25em 0;
+       margin: 0.5em 0;
+       font-weight: 600;
+       text-transform: capitalize;
+       border-right: 0.2rem solid #fff;
+
+      &:hover {
+        color: rgb(237, 90, 107);
+        cursor: pointer;
+      }
+    }
+    .active {
+      color: rgb(237, 90, 107);
+      border-right: 0.2rem solid rgb(237, 90, 107);
+    }
+  }
+
+  .products {
+    padding: 2rem;
+    height: 80vh;
+    overflow: scroll;
+    text-align: left;
+    text-transform: capitalize;
+
+    h2 {
+      margin: 0;
+      font-weight: bold;
+    }
+
+    &::-webkit-scrollbar {
+      width: 0;
+    }
+    .items {
+      color: #686b78;
+      margin-bottom: 4rem;
+    }
+
+    .item-card {
+      text-transform: capitalize;
+      .row {
+        padding-top: 0.5em;
+        border-bottom: 0.1rem solid #e9e9eb;
+      }
+
+      h5 {
+        padding-top: 1rem;
+        font-weight: bold;
+        font-size: 1.2em;
+      }
+     .available{
+      background: #f6ffed;
+      border-color: #b7eb8f;
+      color: #389e0d;
+      padding: 0.5em;
+     }
+     .unavailable{
+       color: red;
+       background: #fff2e8;
+       padding: 0.5em;
+     }
+      .image {
+        display: flex;
+        justify-content: center;
+        img {
+          max-width: 6rem;
+          height: 6rem;
+          border-radius: 5px;
+        }
+      }
+      .add-cart {
+        display: flex;
+        justify-content: center;
+        button {
+          background-color: #fff;
+          padding: 0.25em 1rem;
+          border: 0.1rem solid #efefef;
+          border-radius: 0.5em;
+          position: relative;
+          font-weight: 600;
+          font-size: 0.8em;
+          color: #60b246;
+          box-shadow: 0 4px 7px 0 rgb(218 220 230 / 60%);
+          bottom: 0.5rem;
+          &:hover{
+            box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+          }
+          &:disabled{
+            color: gray;
+            cursor: not-allowed;
+          }
+        }
+      }
+    }
+  }
+  .cart {
+    height: 80vh;
+    text-align: left;
+    border-left: 0.1rem solid #e9e9eb;
+    .items {
+      color: #686b78;
+      margin-bottom: 4rem;
+    }
+
+    .name {
+      color: #3595ff;
+    }
+    .cart-item {
+      height: 30vh;
+      overflow-y: scroll;
+      margin: 2rem 0;
+      .row {
+        display: flex;
+        justify-content: space-evenly;
+        width: 100%;
+        padding: 1rem 0;
+
+        .counter {
+          .box {
+            border: 0.1rem solid #e9e9eb;
+          }
+
+          .remove {
+            background-color: transparent;
+            border: none;
+            color: red;
+          }
+
+          .number {
+            color: #60b246;
+          }
+          .add {
+            background-color: transparent;
+            border: none;
+            color: #60b246;
+          }
+        }
+
+        .name {
+          width: 40%;
+          overflow: hidden;
+        }
+      }
+    }
+
+    .subtotal {
+      display: flex;
+      justify-content: space-between;
+      padding: 1rem;
+      font-weight: bold;
+    }
+    .check-out {
+      padding: 1rem;
+      display: flex;
+      justify-content: center;
+      button {
+        border: none;
+        background-color: #60b246;
+        color: #fff;
+        width: 100%;
+        padding: 1rem;
+      }
+    }
+  }
+}
+.disables {
+  pointer-events: none;
+  opacity: 0.4;
+}
+.emptycart{
+  width: 100%;
+}
+
+@media screen and (max-width: 600px) {
+  .col-7,.col-3 {
+    max-width: 100%;
+  }
+  .order-online{
+    .carry{
+      display: block;
+    }
+  .category{
+    display: none;
+  }
+  .cart{
+   // margin-bottom: 2em;
+  }
+  .products{
+    width: 100% !important;
+    margin: 0;
+  }
+}
+}

@@ -1,0 +1,70 @@
+<app-navbar></app-navbar>
+<div class="check-out">
+  <div class="content">
+    <h3>Your Details:</h3>
+    <hr>
+    <div class="head" *ngIf="activeUser!=null">
+      <div class="detail">
+        <p>Name:<span> {{activeUser.name}}</span></p>
+      </div>
+      <div class="detail">
+        <p>Email:<span> {{activeUser.email}}</span></p>
+      </div>
+      <div class="detail">
+        <p>Number:<span> {{activeUser.phoneNumber}}</span></p>
+      </div>
+    </div>
+  </div>
+  <div class="checkout-content">
+    <div class="cart">
+      <div class="heading">My Cart ({{ cart.length }})</div>
+      <div class="cart-content">
+        <div class="item-row row" *ngFor="let item of cart">
+          <div class="col-md-2"><img class="image" [src]="item.imgUrl" alt="not avalable"></div>
+          <div class="name col-md-3">
+            <h3>Item Name</h3>{{item.productName}}
+          </div>
+          <div class="counter col-md-3">
+            <h3>Quantity</h3><span class="number"><button class="remove" (click)="removeFromCart(item._id)">-</button>
+              {{item.qty}}<button class="add" (click)="addIntoCart(item._id)">+</button> </span>
+          </div>
+          <div class="price col-md-3">
+            <h3>Cost</h3>&#8377;{{item.price*item.qty}}
+          </div>
+        </div>
+        <div class="item-row responsive" *ngFor="let item of cart">
+          <div class="image-name">
+            <div class="col-md-2"><img class="image" [src]="item.imgUrl" alt="not avalable"></div>
+            <div class="name col-md-3">
+              {{item.productName}}
+            </div>
+          </div>
+          <div class="counter-price">
+          <div class="counter col-md-3">
+            <h3>Quantity</h3><span class="number"><button class="remove" (click)="removeFromCart(item._id)">-</button>
+              {{item.qty}}<button class="add" (click)="addIntoCart(item._id)">+</button> </span>
+          </div>
+          <div class="price col-md-3">
+            <h3>Cost</h3>&#8377;{{item.price*item.qty}}
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+    <div class="pay">
+      <div class="head">SUMMARY</div>
+      <div class="subtotal">
+        <span>SubTotal</span><span>&#8377; {{ total }}</span>
+      </div>
+      <div class="discount"><span>Discount</span><span>&#8377; 0</span></div>
+      <div class="total">
+        <span>Total</span> <span>&#8377; {{ total }}</span>
+      </div>
+      <div class="pay-out">
+        <button class="pay-button" [ngClass]="{'disables':cart.length==0}" (click)="orderDone()"> PAY</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>

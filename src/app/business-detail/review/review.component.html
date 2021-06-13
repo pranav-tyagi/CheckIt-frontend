@@ -1,0 +1,32 @@
+<div class="review container">
+  <h3 class="heading">Reviews</h3>
+  <!-- <p>No reviews</p> -->
+  <div class="row singleReview" *ngFor="let item of review">
+    <div class="col-md-6 name">
+      &#9733;  {{ item.name }}
+      <h2 class="comment text-muted">{{ item.comment }}</h2>
+    </div>
+    <div class="rating col-md-6">
+      <ng-template #t let-fill="fill">
+        <span class="star" [class.full]="fill === 100">
+          <span class="half" [style.width.%]="fill">
+            <div class="rate-box">
+              <i class="fa fa-star" aria-hidden="true"></i>
+            </div>
+          </span>
+          <div class="rate-box">
+            <i class="fa fa-star" aria-hidden="true"></i>
+          </div>
+        </span>
+      </ng-template>
+      <ngb-rating
+        [max]="5"
+        [starTemplate]="t"
+        [(rate)]="item.rating"
+        [readonly]="true"
+      ></ngb-rating>
+      <span class="rate"> {{ item.rating }} </span>
+    </div>
+    <hr>
+  </div>
+</div>

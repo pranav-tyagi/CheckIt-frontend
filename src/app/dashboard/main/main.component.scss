@@ -1,0 +1,134 @@
+.main {
+  .heading {
+    h3 {
+      font-weight: 700;
+      font-size: 24px;
+      span {
+        text-transform: capitalize;
+      }
+    }
+  }
+
+  .content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 1em;
+    row-gap: 1em;
+    .weather {
+      position: relative;
+      height: 15em;
+
+      img {
+        border-radius: 15px;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+      }
+      p {
+        position: absolute;
+        top: 1em;
+        right: 1em;
+        //@at-root  : 600;
+        font-size: 2.4rem;
+        span{
+          font-size: 1.8rem;
+        }
+      }
+    }
+
+    .stat-board {
+      height: 15em;
+      color: #fff;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 1em;
+      row-gap: 1em;
+
+      > div {
+        border-radius: 1em;
+        padding: 1em;
+        p {
+          padding: 0;
+          margin: 0;
+        }
+        .heading,
+        .stat {
+          font-size: 1em;
+        }
+        .count {
+          font-weight: 600;
+          font-size: 1.4em;
+        }
+        .stat {
+          font-weight: 500;
+        }
+      }
+      .today {
+        background-color: #7da0fa;
+      }
+      .week {
+        background-color: #4747a1;
+      }
+      .month {
+        background-color: #7878e8;
+      }
+      .rating {
+        background-color: #f4797e;
+      }
+    }
+    .active-customers {
+      padding: 1em 2em;
+      background-color: #fff;
+      border-radius: 15px;
+      .heading {
+        font-weight: 700;
+        font-size: 18px;
+        margin: 0;
+      }
+      .customer-count {
+        font-size: 12px;
+        font-weight: 600;
+        span {
+          font-size: 16px;
+          color: red;
+        }
+      }
+      .viewAll {
+        font-size: 12px;
+        font-weight: 700;
+        float: right;
+        cursor: pointer;
+        border: 2px solid rgb(237, 90, 107);
+        color: rgb(237, 90, 107);
+        padding: 0.25em;
+        margin: 0;
+        margin-top: 1em;
+        border-radius: 5px;
+      }
+
+      table {
+        width: 100%;
+        padding: 1em;
+        text-align: center;
+        thead {
+          th {
+            font-size: 14px;
+          }
+        }
+        tbody {
+          tr {
+            line-height: 2em;
+            td {
+              font-size: 12px;
+              text-overflow: ellipsis;
+            }
+          }
+          .odd {
+            background: #fff5ee;
+          }
+        }
+      }
+    }
+  }
+}
+

@@ -1,0 +1,21 @@
+<app-navbar></app-navbar>
+<div class="row dashboard">
+
+  <div class="side-bar">
+    <ul>
+      <li routerLinkActive="active" [routerLink]="['/',userId,'dashboard']" [routerLinkActiveOptions]="{exact:
+        true}"><i class="fa fa-th-large" aria-hidden="true"></i>Dashboard</li>
+        <li *ngIf="user.type=='shop'||user.type=='restaurant'" routerLinkActive="active" [routerLink]="['/',userId,'dashboard','order']"><i class="fa fa-bar-chart" aria-hidden="true"></i>Orders</li>
+      <li routerLinkActive="active" [routerLink]="['/',userId,'dashboard','work']"><i class="fa fa-briefcase"
+          aria-hidden="true"></i>Work</li>
+      <li   routerLinkActive="active" [routerLink]="['/',userId,'dashboard','employee']"><i class="fa fa-users" aria-hidden="true"></i>Employee</li>
+
+      <li *ngIf="user.type=='shop'||user.type=='restaurant'" routerLinkActive="active" [routerLink]="['/',userId,'dashboard','inventory']"><i class="fa fa-tasks" aria-hidden="true"></i>Inventory</li>
+
+      <li routerLinkActive="active" [routerLink]="['/',userId,'dashboard','profile']"><i class="fa fa-user"></i>profile</li>
+    </ul>
+  </div>
+  <div class="main-section">
+    <router-outlet [id]="userId"></router-outlet>
+  </div>
+</div>

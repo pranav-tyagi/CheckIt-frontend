@@ -1,0 +1,71 @@
+<div class="photos">
+  <div class="displayPhoto">
+    <div class="sidebar">
+      <img src={{item}} *ngFor="let item of user.images" (mouseenter)="changePhoto(item)">
+    </div>
+    <div *ngIf="user.images==0">You don't have any Photos</div>
+    <div class="selectedPhoto" *ngIf="user.images.length!=0">
+      <img src={{selectedPhoto}}>
+      <button type="submit" class="btn delete" (click) = "deletePhoto()"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+    </div>
+    <div class="uploadPhoto">
+      <h3 class="heading">Add Photos   <img class="spinner" src="../../../assets/spinner.gif" *ngIf="imageUploadingLoader==1"></h3>
+      <form [formGroup] = "imageForm" (ngSubmit) = "uploadImage()">
+        <div class="row">
+        <input type = "file" (change) = "upload($event)" accept = "*.png,.jpg,.jpeg">
+        <button class="upload" type = "submit">Upload Image</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+<div class="basicDetails">
+  <h3 class="heading">Organization Details</h3>
+  <table class="col-md-12">
+    <!-- <thead>
+      <tr>
+        <th>Titles</th>
+        <th>Values</th>
+      </tr>
+    </thead> -->
+    <tbody>
+      <tr class="odd">
+        <td class="keys">Name</td>
+        <td>{{user.ownername}}</td>
+      </tr>
+      <tr class="">
+        <td class="keys">organization Name</td>
+        <td>{{user.organizationName}}</td>
+      </tr>
+      <tr class="odd">
+        <td class="keys">Covid Capacity</td>
+        <td>{{user.covidCapacity}}</td>
+      </tr>
+      <tr class="">
+        <td class="keys">Type of organization</td>
+        <td>{{user.type}}</td>
+      </tr>
+      <tr class="odd">
+        <td class="keys">Address</td>
+        <td>{{user.address}},{{user.city}},{{user.state}}</td>
+      </tr>
+      <tr class="">
+        <td class="keys">Description</td>
+        <td>{{user.organizationDesc}}</td>
+      </tr>
+
+  </table>
+</div>
+
+
+  <div class="policies container">
+    <h3 class="heading">Covid Precautions</h3>
+    <div><div class="image"><img src="../../../assets/images/spray.png"></div> <div><span class="subheading">Sanitization</span>We do sanitization properly on regular basis</div></div>
+    <div><div class="image"><img src="../../../assets/images/keep-distance.png"></div><div><span class="subheading">Social Distancing</span>We keep check of social distancing in our premises</div></div>
+    <div><div class="image"><img src="../../../assets/images/medical-mask.png"></div><div><span class="subheading">Mask and PPE Kits</span>All our employees uses mask and PPE Kits</div></div>
+    <div><div class="image"><img src="../../../assets/images/thermometer.png"></div> <div><span class="subheading">Temperature Check</span>We check temperature of each person entering in our premises</div></div>
+    <div *ngIf="user.organizationCovidDesc!=''"><div class="image"><img src="../../../assets/images/no-virus.png"></div> <div><span class="subheading">Other Precautions</span>{{user.organizationCovidDesc}}</div></div>
+  </div>
+
+
+

@@ -1,0 +1,69 @@
+
+<div class="order-online container" data-spy="scroll" data-target="#myScrollspy">
+  <p *ngIf="items.length==0">Service not available</p>
+  <div class="row carry" *ngIf="items.length!=0">
+
+    <!-- category -->
+    <div class="category col-2" id="myScrollspy">
+      <span *ngFor="let item of items;let i=index" (click)="scroll(item.categoryName,i)" class="category-item" [ngClass] ="{'active':select==i}">{{item.categoryName}}</span>
+    </div>
+    <!-- products -->
+    <div class="products col-7">
+      <div *ngFor="let item of items">
+        <div>
+          <h2 id={{item.categoryName}}>{{item.categoryName}}</h2>
+          <!-- <span class="items">{{item.itemArr.length}} ITEMS</span> -->
+        </div>
+        <div class="item-card">
+          <div class="row" *ngFor="let product of item.itemArr" >
+            <div class="col-8">
+              <h5>{{product.productName}}</h5>
+              &#8377; {{product.price}}
+              <p *ngIf="product.inStock" class="available">Available</p>
+              <p *ngIf="!product.inStock" class="unavailable">Unavailable</p>
+            </div>
+            <div class="col-4">
+              <div class="image">
+                <img [src]="product.imgUrl">
+              </div>
+              <div class="add-cart">
+                <!-- <button  (click)="addIntoCart(product._id,product.productName,product.price,1)">ADD</button> -->
+                <button (click)="addIntoCart(product._id)" [ngClass]="{'disables':!isLoggedIn}" [disabled]="!product.inStock">ADD</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- cart -->
+    <div class="cart col-3">
+      <div>
+        <h2>Cart</h2>
+        <!-- from <span class="name">shop name</span><br> -->
+        <!-- <span class="items">{{cart.length}} items</span> -->
+      </div>
+      <div *ngIf="cart.length==0">
+        <img class="emptycart" src="../../../assets/emptycart.png">
+      </div>
+      <div class="cart-item" *ngIf="cart.length>0">
+
+        <div class="row" *ngFor="let item of cart;let i=index" >
+          <span class="name">{{item.productName}}</span>
+          <span class="counter"><span class="box"><button class="remove" (click)="removeFromCart(item._id)"> - </button> <span class="number"> {{item.qty}} </span>
+          <button class="add" (click)="addIntoCart(item._id)">
+              + </button></span></span>
+          <span>{{item.price*item.qty}}</span>
+        </div>
+      </div>
+      <div>
+        <div class="subtotal">
+          <span>Subtotal</span>
+          <span>&#8377; {{total}}</span>
+        </div>
+        <div class="check-out">
+          <button routerLink="/checkout/{{id}}" [ngClass]="{'disables':!isLoggedIn||cart.length==0}" >CHECKOUT</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

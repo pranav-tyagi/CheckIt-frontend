@@ -1,0 +1,73 @@
+{
+  "name": "covid-app",
+  "version": "0.0.0",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "test": "ng test",
+    "lint": "ng lint",
+    "e2e": "ng e2e"
+  },
+  "private": true,
+  "dependencies": {
+    "@angular/animations": "^11.2.12",
+    "@angular/cdk": "^11.2.9",
+    "@angular/common": "~11.2.7",
+    "@angular/compiler": "~11.2.7",
+    "@angular/core": "~11.2.7",
+    "@angular/forms": "~11.2.7",
+    "@angular/localize": "~11.2.7",
+    "@angular/material": "^11.2.11",
+    "@angular/platform-browser": "~11.2.7",
+    "@angular/platform-browser-dynamic": "~11.2.7",
+    "@angular/router": "~11.2.7",
+    "@cloudinary/angular-5.x": "^1.4.1",
+    "@fortawesome/angular-fontawesome": "^0.6.0",
+    "@ng-bootstrap/ng-bootstrap": "^9.1.0",
+    "@ngmodule/material-carousel": "^0.6.0",
+    "@types/socket.io-client": "^1.4.36",
+    "angular-ng-autocomplete": "^2.0.5",
+    "bootstrap": "^4.6.0",
+    "cloudinary-core": "^2.11.4",
+    "jquery": "^3.6.0",
+    "ng-circle-progress": "^1.6.0",
+    "ngx-google-places-autocomplete": "^2.0.5",
+    "ngx-socket-io": "^4.0.0",
+    "rxjs": "~6.6.0",
+    "socket.io-client": "^4.1.1",
+    "tslib": "^2.0.0",
+    "zone.js": "~0.11.3"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "~0.1102.6",
+    "@angular/cli": "~11.2.6",
+    "@angular/compiler-cli": "~11.2.7",
+    "@types/jasmine": "~3.6.0",
+    "@types/node": "^12.11.1",
+    "codelyzer": "^6.0.0",
+    "jasmine-core": "~3.6.0",
+    "jasmine-spec-reporter": "~5.0.0",
+    "karma": "~6.1.0",
+    "karma-chrome-launcher": "~3.1.0",
+    "karma-coverage": "~2.0.3",
+    "karma-jasmine": "~4.0.0",
+    "karma-jasmine-html-reporter": "^1.5.0",
+    "protractor": "~7.0.0",
+    "ts-node": "~8.3.0",
+    "tslint": "~6.1.0",
+    "typescript": "~4.1.5"
+  },
+  "description": "This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.6.",
+  "main": "karma.conf.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pranav-tyagi/CheckIt-frontend.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pranav-tyagi/CheckIt-frontend/issues"
+  },
+  "homepage": "https://github.com/pranav-tyagi/CheckIt-frontend#readme"
+}

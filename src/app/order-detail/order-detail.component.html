@@ -1,0 +1,48 @@
+<app-navbar></app-navbar>
+
+
+<div class="orderDetails">
+  <div class="details">
+    <div class="heading">Order Summary</div>
+    <div class="items" *ngFor="let item of items">
+        <div class="card">
+          <div class="cardImage">
+            <img [src]="item.imgUrl">
+          </div>
+          <div class="cardContent">
+            <h3>{{item.productName}}</h3>
+          <p><span class="bold">Item Id:</span>{{item._id}}</p>
+          <p><span class="bold">Amount:</span>₹{{item.price}}</p>
+          <p><span class="bold">Shop Name:</span>{{store.organizationName}}</p>
+        </div>
+        <div><p><span class="bold">Date:</span>{{order.orderDate}}</p></div>
+        </div>
+    </div>
+
+
+  </div>
+
+<div class="summary" [ngClass]="{'fix':stick==true}">
+  <div class="status">
+    <p>Order Status</p>
+    <p class="highlight">{{order.status}}</p>
+  </div>
+  <div class="bill">
+    <div class="heading">Price Details</div>
+    <div class="content">
+      <div class="price" *ngFor="let item of items">
+        <div class="itemPrice">
+          <p>{{item.productName}} x {{item.qty}}</p>
+          <p>₹{{item.price}}</p>
+        </div>
+      </div>
+      <div class="totalPrice">
+        <p>Total({{order.totalQty}} items)</p>
+        <p>₹{{order.totalCost}}</p>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
+
+<app-footer></app-footer>
